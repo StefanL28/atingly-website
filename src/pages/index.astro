@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import SocialProof from '../components/SocialProof.astro';
+import FeatureSection from '../components/FeatureSection.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FAQ from '../components/FAQ.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Footer from '../components/Footer.astro';
+import { mainFeatures } from '../data/features';
+---
+
+<Layout>
+  <Navbar />
+  <Hero />
+  <SocialProof />
+
+  <!-- Feature Sections -->
+  <section class="py-20 lg:py-32 bg-background" id="fonctionnalites">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <SectionHeading subtitle="Decouvrez comment Swoop transforme votre facon de faire des economies a Abidjan.">
+        Pourquoi choisir <span class="text-primary">Swoop</span>
+      </SectionHeading>
+
+      <div class="space-y-24 lg:space-y-32">
+        <FeatureSection
+          title={mainFeatures[0].title}
+          description={mainFeatures[0].description}
+          color={mainFeatures[0].color}
+          screenContent="chat"
+        />
+        <FeatureSection
+          title={mainFeatures[1].title}
+          description={mainFeatures[1].description}
+          color={mainFeatures[1].color}
+          reverse={true}
+          screenContent="deals"
+        />
+        <FeatureSection
+          title={mainFeatures[2].title}
+          description={mainFeatures[2].description}
+          color={mainFeatures[2].color}
+          screenContent="map"
+        />
+      </div>
+    </div>
+  </section>
+
+  <BentoGrid />
+  <HowItWorks />
+  <Testimonials />
+  <FAQ />
+  <FinalCTA />
+  <Footer />
+
+  <script>
+    import '../scripts/animations';
+  </script>
+</Layout>

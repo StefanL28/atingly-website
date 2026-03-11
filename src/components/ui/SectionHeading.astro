@@ -1,0 +1,19 @@
+---
+interface Props {
+  subtitle?: string;
+  align?: 'left' | 'center';
+  class?: string;
+}
+
+const { subtitle, align = 'center', class: className = '' } = Astro.props;
+const alignClass = align === 'center' ? 'text-center mx-auto' : 'text-left';
+---
+
+<div class={`max-w-2xl mb-16 ${alignClass} ${className}`} data-animate="fade-up">
+  <h2 class="text-3xl md:text-5xl font-bold text-text-primary tracking-tight mb-4">
+    <slot />
+  </h2>
+  {subtitle && (
+    <p class="text-lg text-text-secondary leading-relaxed">{subtitle}</p>
+  )}
+</div>

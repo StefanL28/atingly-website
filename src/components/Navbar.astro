@@ -1,0 +1,132 @@
+---
+import Button from './ui/Button.astro';
+
+const navLinks = [
+  { label: 'Fonctionnalites', href: '#fonctionnalites' },
+  { label: 'Comment ca marche', href: '#comment-ca-marche' },
+  { label: 'Temoignages', href: '#temoignages' },
+  { label: 'FAQ', href: '#faq' },
+];
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2 group">
+        <div class="w-9 h-9 bg-primary rounded-lg flex items-center justify-center transition-transform group-hover:scale-105">
+          <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 20C8 20 10 12 16 12C22 12 24 20 24 20" stroke="white" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="16" cy="22" r="2.5" fill="white"/>
+          </svg>
+        </div>
+        <span class="text-xl font-extrabold text-primary tracking-tight">Swoop</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
+          >
+            {link.label}
+          </a>
+        ))}
+        <Button href="#telecharger" size="sm">Telecharger</Button>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button
+        id="menu-toggle"
+        class="md:hidden relative w-10 h-10 flex items-center justify-center"
+        aria-label="Menu"
+        aria-expanded="false"
+      >
+        <div class="hamburger-lines">
+          <span class="block w-6 h-0.5 bg-text-primary transition-all duration-300 origin-center"></span>
+          <span class="block w-6 h-0.5 bg-text-primary transition-all duration-300 mt-1.5"></span>
+          <span class="block w-4 h-0.5 bg-text-primary transition-all duration-300 mt-1.5"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="md:hidden fixed inset-0 bg-white z-40 translate-x-full transition-transform duration-500 ease-out">
+    <div class="flex flex-col items-center justify-center h-full gap-8">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class="mobile-nav-link text-2xl font-bold text-text-primary hover:text-primary transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+      <Button href="#telecharger" size="lg" class="mt-4">Telecharger l'app</Button>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+
+  // Sticky nav scroll effect
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    if (navbar) {
+      if (currentScroll > 50) {
+        navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm');
+      } else {
+        navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm');
+      }
+    }
+    lastScroll = currentScroll;
+  });
+
+  // Mobile menu toggle
+  menuToggle?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.contains('translate-x-0');
+    if (isOpen) {
+      mobileMenu?.classList.remove('translate-x-0');
+      mobileMenu?.classList.add('translate-x-full');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      menuToggle.querySelector('.hamburger-lines')?.classList.remove('open');
+    } else {
+      mobileMenu?.classList.remove('translate-x-full');
+      mobileMenu?.classList.add('translate-x-0');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      menuToggle.querySelector('.hamburger-lines')?.classList.add('open');
+    }
+  });
+
+  // Close mobile menu on link click
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.remove('translate-x-0');
+      mobileMenu?.classList.add('translate-x-full');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      menuToggle?.querySelector('.hamburger-lines')?.classList.remove('open');
+    });
+  });
+</script>
+
+<style>
+  .hamburger-lines.open span:nth-child(1) {
+    transform: translateY(4px) rotate(45deg);
+  }
+  .hamburger-lines.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger-lines.open span:nth-child(3) {
+    width: 1.5rem;
+    transform: translateY(-4px) rotate(-45deg);
+  }
+</style>

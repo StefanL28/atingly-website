@@ -1,0 +1,25 @@
+---
+interface Props {
+  count?: number;
+  text?: string;
+}
+
+const { count = 5, text = "Rejoint par 10 000+ utilisateurs" } = Astro.props;
+
+const colors = ['#FF6B2C', '#00B67A', '#FFBE1A', '#E5551A', '#6B6560'];
+const initials = ['AK', 'KM', 'FD', 'JB', 'SN'];
+---
+
+<div class="flex items-center gap-3">
+  <div class="flex -space-x-3">
+    {Array.from({ length: count }).map((_, i) => (
+      <div
+        class="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold shadow-sm"
+        style={`background-color: ${colors[i % colors.length]}; z-index: ${count - i}`}
+      >
+        {initials[i % initials.length]}
+      </div>
+    ))}
+  </div>
+  <p class="text-sm text-text-secondary font-medium">{text}</p>
+</div>

@@ -1,0 +1,59 @@
+---
+import SectionHeading from './ui/SectionHeading.astro';
+import FAQItem from './FAQItem.astro';
+import { faqItems } from '../data/faq';
+---
+
+<section class="py-20 lg:py-32 bg-background" id="faq">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8">
+    <SectionHeading subtitle="Tout ce que vous devez savoir sur Swoop.">
+      Questions <span class="text-primary">frequentes</span>
+    </SectionHeading>
+
+    <div class="divide-y-0" data-animate="fade-up">
+      {faqItems.map(item => (
+        <FAQItem question={item.question} answer={item.answer} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.faq-item');
+      const content = item?.querySelector('.faq-content') as HTMLElement;
+      const vertical = item?.querySelector('.faq-vertical') as SVGLineElement;
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+      // Close all other items
+      document.querySelectorAll('.faq-item').forEach(otherItem => {
+        if (otherItem !== item) {
+          const otherContent = otherItem.querySelector('.faq-content') as HTMLElement;
+          const otherTrigger = otherItem.querySelector('.faq-trigger');
+          const otherVertical = otherItem.querySelector('.faq-vertical') as SVGLineElement;
+          if (otherContent) otherContent.style.maxHeight = '0';
+          otherTrigger?.setAttribute('aria-expanded', 'false');
+          if (otherVertical) otherVertical.style.transform = '';
+        }
+      });
+
+      if (isOpen) {
+        content.style.maxHeight = '0';
+        trigger.setAttribute('aria-expanded', 'false');
+        if (vertical) vertical.style.transform = '';
+      } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        trigger.setAttribute('aria-expanded', 'true');
+        if (vertical) vertical.style.transform = 'rotate(90deg)';
+      }
+    });
+  });
+</script>
+
+<style>
+  .faq-vertical {
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+</style>

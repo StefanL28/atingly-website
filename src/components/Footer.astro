@@ -1,0 +1,85 @@
+---
+const quickLinks = [
+  { label: 'Fonctionnalites', href: '#fonctionnalites' },
+  { label: 'Comment ca marche', href: '#comment-ca-marche' },
+  { label: 'Temoignages', href: '#temoignages' },
+  { label: 'FAQ', href: '#faq' },
+];
+
+const socialLinks = [
+  { label: 'Instagram', icon: '<rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>' },
+  { label: 'Facebook', icon: '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>' },
+  { label: 'Twitter', icon: '<path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>' },
+];
+---
+
+<footer class="bg-dark-bg pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-white/10">
+      <!-- Brand -->
+      <div>
+        <a href="#" class="flex items-center gap-2 mb-4">
+          <div class="w-9 h-9 bg-primary rounded-lg flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+              <path d="M8 20C8 20 10 12 16 12C22 12 24 20 24 20" stroke="white" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="16" cy="22" r="2.5" fill="white"/>
+            </svg>
+          </div>
+          <span class="text-xl font-extrabold text-white tracking-tight">Swoop</span>
+        </a>
+        <p class="text-white/50 text-sm leading-relaxed max-w-xs mb-6">
+          Vos meilleures offres livrees directement par chat. Economisez chaque jour a Abidjan.
+        </p>
+        <div class="flex gap-3">
+          {socialLinks.map(social => (
+            <a
+              href="#"
+              class="w-10 h-10 bg-white/10 hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300"
+              aria-label={social.label}
+            >
+              <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <Fragment set:html={social.icon} />
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-white font-semibold mb-4">Liens rapides</h4>
+        <ul class="space-y-3">
+          {quickLinks.map(link => (
+            <li>
+              <a href={link.href} class="text-white/50 hover:text-white transition-colors text-sm">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="text-white font-semibold mb-4">Contact</h4>
+        <ul class="space-y-3 text-sm text-white/50">
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <a href="mailto:contact@swoop.ci" class="hover:text-white transition-colors">contact@swoop.ci</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>Abidjan, Cote d'Ivoire</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="pt-8 text-center">
+      <p class="text-white/30 text-sm">&copy; 2026 Swoop. Tous droits reserves.</p>
+    </div>
+  </div>
+</footer>

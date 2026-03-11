@@ -1,0 +1,23 @@
+---
+import BentoCard from './BentoCard.astro';
+import SectionHeading from './ui/SectionHeading.astro';
+import { bentoFeatures } from '../data/features';
+---
+
+<section class="py-20 lg:py-32 bg-surface-alt" id="fonctionnalites-suite">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <SectionHeading subtitle="Tout ce dont vous avez besoin pour economiser intelligemment.">
+      Plus de raisons d'aimer <span class="text-primary">Swoop</span>
+    </SectionHeading>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {bentoFeatures.map(feature => (
+        <BentoCard
+          title={feature.title}
+          description={feature.description}
+          icon={feature.icon}
+        />
+      ))}
+    </div>
+  </div>
+</section>
