@@ -1,4 +1,6 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
 interface Props {
   title: string;
   description: string;
@@ -9,6 +11,9 @@ interface Props {
 
 const { title, description, color, reverse = false, screenContent = 'chat' } = Astro.props;
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const colorMap = {
   primary: { bg: 'bg-primary/10', blob: 'bg-primary/15', accent: 'brand-gradient', accentBg: 'bg-primary', text: 'text-primary' },
   secondary: { bg: 'bg-secondary/10', blob: 'bg-secondary/12', accent: 'bg-secondary', accentBg: 'bg-secondary', text: 'text-secondary' },
@@ -16,6 +21,8 @@ const colorMap = {
 };
 
 const colors = colorMap[color];
+
+const categories = [t('cat.restaurants'), t('cat.fashion'), t('cat.beauty')];
 ---
 
 <div class={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${reverse ? 'direction-reverse' : ''}`}>
@@ -32,21 +39,21 @@ const colors = colorMap[color];
           {screenContent === 'chat' && (
             <div class="h-full flex flex-col">
               <div class={`${colors.accent} px-4 pt-6 pb-3`}>
-                <p class="text-white font-bold text-xs">Swoop Chat</p>
-                <p class="text-white/70 text-[10px]">3 nouvelles offres</p>
+                <p class="text-white font-bold text-xs">{t('screen.chat.title')}</p>
+                <p class="text-white/70 text-[10px]">{t('screen.chat.subtitle')}</p>
               </div>
               <div class="flex-1 p-3 space-y-2 bg-gray-50">
                 <div class="bg-white rounded-xl px-3 py-2 shadow-sm border border-border">
-                  <p class="text-[9px] font-semibold text-text-primary">Nouvelle offre pour vous !</p>
-                  <p class="text-[8px] text-text-secondary mt-0.5">Restaurant Le Gourmet — 25% de reduction</p>
+                  <p class="text-[9px] font-semibold text-text-primary">{t('screen.chat.offer1.title')}</p>
+                  <p class="text-[8px] text-text-secondary mt-0.5">{t('screen.chat.offer1.desc')}</p>
                 </div>
                 <div class="bg-white rounded-xl px-3 py-2 shadow-sm border border-border">
-                  <p class="text-[9px] font-semibold text-text-primary">Offre flash ⚡</p>
-                  <p class="text-[8px] text-text-secondary mt-0.5">Supermarche Express — 15% sur tout</p>
+                  <p class="text-[9px] font-semibold text-text-primary">{t('screen.chat.offer2.title')}</p>
+                  <p class="text-[8px] text-text-secondary mt-0.5">{t('screen.chat.offer2.desc')}</p>
                 </div>
                 <div class="bg-white rounded-xl px-3 py-2 shadow-sm border border-border">
-                  <p class="text-[9px] font-semibold text-text-primary">Recommande pour vous</p>
-                  <p class="text-[8px] text-text-secondary mt-0.5">Salon Beaute Plus — Soin gratuit</p>
+                  <p class="text-[9px] font-semibold text-text-primary">{t('screen.chat.offer3.title')}</p>
+                  <p class="text-[8px] text-text-secondary mt-0.5">{t('screen.chat.offer3.desc')}</p>
                 </div>
               </div>
             </div>
@@ -54,15 +61,15 @@ const colors = colorMap[color];
           {screenContent === 'deals' && (
             <div class="h-full flex flex-col">
               <div class={`${colors.accentBg} px-4 pt-6 pb-3`}>
-                <p class="text-white font-bold text-xs">Pour vous</p>
-                <p class="text-white/70 text-[10px]">Basé sur vos préférences</p>
+                <p class="text-white font-bold text-xs">{t('screen.deals.title')}</p>
+                <p class="text-white/70 text-[10px]">{t('screen.deals.subtitle')}</p>
               </div>
               <div class="flex-1 p-3 space-y-2 bg-gray-50">
-                {['🍽️ Restaurants', '👗 Mode', '💇 Beaute'].map((cat) => (
+                {categories.map((cat) => (
                   <div class="bg-white rounded-xl p-2.5 shadow-sm border border-border">
                     <div class="flex items-center justify-between">
                       <span class="text-[9px] font-semibold text-text-primary">{cat}</span>
-                      <span class={`text-[8px] font-bold ${colors.text} ${colors.bg} px-2 py-0.5 rounded-full`}>Nouveau</span>
+                      <span class={`text-[8px] font-bold ${colors.text} ${colors.bg} px-2 py-0.5 rounded-full`}>{t('screen.deals.new')}</span>
                     </div>
                     <div class="flex gap-1 mt-1.5">
                       <div class={`h-1 flex-1 ${colors.accentBg} rounded-full opacity-60`}></div>
@@ -76,8 +83,8 @@ const colors = colorMap[color];
           {screenContent === 'map' && (
             <div class="h-full flex flex-col">
               <div class={`${colors.accentBg} px-4 pt-6 pb-3`}>
-                <p class="text-white font-bold text-xs">Pres de vous</p>
-                <p class="text-white/70 text-[10px]">12 commerces partenaires</p>
+                <p class="text-white font-bold text-xs">{t('screen.map.title')}</p>
+                <p class="text-white/70 text-[10px]">{t('screen.map.subtitle')}</p>
               </div>
               <div class="flex-1 bg-gray-100 relative">
                 <!-- Simplified map placeholder -->
@@ -105,7 +112,7 @@ const colors = colorMap[color];
                   <div class={`w-6 h-6 ${colors.accentBg} rounded-full flex items-center justify-center`}>
                     <span class="text-white text-[8px]">📍</span>
                   </div>
-                  <p class="text-[8px] text-text-secondary font-medium">Abidjan, Cote d'Ivoire</p>
+                  <p class="text-[8px] text-text-secondary font-medium">{t('footer.location')}</p>
                 </div>
               </div>
             </div>
@@ -119,7 +126,7 @@ const colors = colorMap[color];
   <div class={`${reverse ? 'lg:order-1' : ''}`} data-animate="fade-up">
     <div class={`inline-flex items-center gap-2 px-3 py-1.5 ${colors.bg} rounded-full mb-6`}>
       <div class={`w-2 h-2 ${colors.accentBg} rounded-full`}></div>
-      <span class={`text-xs font-semibold ${colors.text}`}>Fonctionnalite</span>
+      <span class={`text-xs font-semibold ${colors.text}`}>{t('features.badge')}</span>
     </div>
     <h3 class="text-3xl md:text-4xl font-bold text-text-primary tracking-tight mb-4">{title}</h3>
     <p class="text-lg text-text-secondary leading-relaxed max-w-md">{description}</p>

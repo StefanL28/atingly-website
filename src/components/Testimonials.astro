@@ -1,8 +1,28 @@
 ---
 import SectionHeading from './ui/SectionHeading.astro';
 import TestimonialCard from './TestimonialCard.astro';
-import AvatarStack from './AvatarStack.astro';
-import { testimonials } from '../data/testimonials';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const testimonials = [
+  {
+    quote: t('testimonials.0.quote'),
+    author: 'Aminata K.',
+    location: 'Cocody, Abidjan',
+  },
+  {
+    quote: t('testimonials.1.quote'),
+    author: 'Kouadio M.',
+    location: 'Plateau, Abidjan',
+  },
+  {
+    quote: t('testimonials.2.quote'),
+    author: 'Fatou D.',
+    location: 'Yopougon, Abidjan',
+  },
+];
 ---
 
 <section class="py-20 lg:py-32 bg-surface-alt" id="temoignages">
@@ -19,8 +39,8 @@ import { testimonials } from '../data/testimonials';
       </div>
     </div>
 
-    <SectionHeading subtitle="Decouvrez pourquoi des milliers d'utilisateurs font confiance a Swoop.">
-      Ce que disent nos <span class="text-gradient">utilisateurs</span>
+    <SectionHeading subtitle={t('testimonials.subtitle')}>
+      {t('testimonials.heading')} <span class="text-gradient">{t('testimonials.headingHighlight')}</span>
     </SectionHeading>
 
     <!-- Mobile: horizontal scroll, Desktop: grid -->

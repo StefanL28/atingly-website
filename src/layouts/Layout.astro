@@ -1,19 +1,26 @@
 ---
 import '../styles/global.css';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 interface Props {
   title?: string;
   description?: string;
 }
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const {
-  title = "Swoop — Vos meilleures offres par chat | Abidjan",
-  description = "Swoop vous connecte aux meilleures réductions d'Abidjan. Recevez des promotions exclusives directement dans votre messagerie. Disponible sur iOS et Android.",
+  title = t('meta.title'),
+  description = t('meta.description'),
 } = Astro.props;
+
+const htmlLang = lang === 'en' ? 'en' : 'fr';
+const ogLocale = t('meta.locale');
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,9 +30,9 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="fr_CI" />
+    <meta property="og:locale" content={ogLocale} />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

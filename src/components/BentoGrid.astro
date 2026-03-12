@@ -1,13 +1,25 @@
 ---
 import BentoCard from './BentoCard.astro';
 import SectionHeading from './ui/SectionHeading.astro';
-import { bentoFeatures } from '../data/features';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const bentoFeatures = [
+  { title: t('bento.0.title'), description: t('bento.0.description'), icon: 'bell' },
+  { title: t('bento.1.title'), description: t('bento.1.description'), icon: 'layout' },
+  { title: t('bento.2.title'), description: t('bento.2.description'), icon: 'gift' },
+  { title: t('bento.3.title'), description: t('bento.3.description'), icon: 'shield' },
+  { title: t('bento.4.title'), description: t('bento.4.description'), icon: 'refresh' },
+  { title: t('bento.5.title'), description: t('bento.5.description'), icon: 'lock' },
+];
 ---
 
 <section class="py-20 lg:py-32 bg-surface-alt" id="fonctionnalites-suite">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <SectionHeading subtitle="Tout ce dont vous avez besoin pour economiser intelligemment.">
-      Plus de raisons d'aimer <span class="text-gradient">Swoop</span>
+    <SectionHeading subtitle={t('bento.subtitle')}>
+      {t('bento.heading')} <span class="text-gradient">Swoop</span>
     </SectionHeading>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

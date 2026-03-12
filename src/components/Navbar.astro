@@ -1,11 +1,17 @@
 ---
 import Button from './ui/Button.astro';
+import { getLangFromUrl, useTranslations, getSwitchLangPath, getSwitchLangLabel } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const switchPath = getSwitchLangPath(lang);
+const switchLabel = getSwitchLangLabel(lang);
 
 const navLinks = [
-  { label: 'Fonctionnalites', href: '#fonctionnalites' },
-  { label: 'Comment ca marche', href: '#comment-ca-marche' },
-  { label: 'Temoignages', href: '#temoignages' },
-  { label: 'FAQ', href: '#faq' },
+  { label: t('nav.features'), href: '#fonctionnalites' },
+  { label: t('nav.howItWorks'), href: '#comment-ca-marche' },
+  { label: t('nav.testimonials'), href: '#temoignages' },
+  { label: t('nav.faq'), href: '#faq' },
 ];
 ---
 
@@ -28,7 +34,14 @@ const navLinks = [
             {link.label}
           </a>
         ))}
-        <Button href="#telecharger" size="sm">Telecharger</Button>
+        <a
+          href={switchPath}
+          class="text-sm font-semibold text-text-secondary hover:text-primary-dark transition-colors border border-border rounded-full px-3 py-1.5"
+          data-astro-reload
+        >
+          {switchLabel}
+        </a>
+        <Button href="#telecharger" size="sm">{t('nav.download')}</Button>
       </div>
 
       <!-- Mobile Hamburger -->
@@ -58,7 +71,14 @@ const navLinks = [
           {link.label}
         </a>
       ))}
-      <Button href="#telecharger" size="lg" class="mt-4">Telecharger l'app</Button>
+      <a
+        href={switchPath}
+        class="text-lg font-semibold text-text-secondary hover:text-primary-dark transition-colors border border-border rounded-full px-5 py-2"
+        data-astro-reload
+      >
+        {switchLabel}
+      </a>
+      <Button href="#telecharger" size="lg" class="mt-4">{t('nav.downloadApp')}</Button>
     </div>
   </div>
 </nav>

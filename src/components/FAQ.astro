@@ -1,13 +1,25 @@
 ---
 import SectionHeading from './ui/SectionHeading.astro';
 import FAQItem from './FAQItem.astro';
-import { faqItems } from '../data/faq';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const faqItems = [
+  { question: t('faq.0.question'), answer: t('faq.0.answer') },
+  { question: t('faq.1.question'), answer: t('faq.1.answer') },
+  { question: t('faq.2.question'), answer: t('faq.2.answer') },
+  { question: t('faq.3.question'), answer: t('faq.3.answer') },
+  { question: t('faq.4.question'), answer: t('faq.4.answer') },
+  { question: t('faq.5.question'), answer: t('faq.5.answer') },
+];
 ---
 
 <section class="py-20 lg:py-32 bg-background" id="faq">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
-    <SectionHeading subtitle="Tout ce que vous devez savoir sur Swoop.">
-      Questions <span class="text-gradient">frequentes</span>
+    <SectionHeading subtitle={t('faq.subtitle')}>
+      {t('faq.heading')} <span class="text-gradient">{t('faq.headingHighlight')}</span>
     </SectionHeading>
 
     <div class="divide-y-0" data-animate="fade-up">

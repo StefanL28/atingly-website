@@ -1,17 +1,17 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
-import SocialProof from '../components/SocialProof.astro';
-import FeatureSection from '../components/FeatureSection.astro';
-import SectionHeading from '../components/ui/SectionHeading.astro';
-import BentoGrid from '../components/BentoGrid.astro';
-import HowItWorks from '../components/HowItWorks.astro';
-import Testimonials from '../components/Testimonials.astro';
-import FAQ from '../components/FAQ.astro';
-import FinalCTA from '../components/FinalCTA.astro';
-import Footer from '../components/Footer.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Hero from '../../components/Hero.astro';
+import SocialProof from '../../components/SocialProof.astro';
+import FeatureSection from '../../components/FeatureSection.astro';
+import SectionHeading from '../../components/ui/SectionHeading.astro';
+import BentoGrid from '../../components/BentoGrid.astro';
+import HowItWorks from '../../components/HowItWorks.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import FAQ from '../../components/FAQ.astro';
+import FinalCTA from '../../components/FinalCTA.astro';
+import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -61,6 +61,6 @@ const t = useTranslations(lang);
   <Footer />
 
   <script>
-    import '../scripts/animations';
+    import '../../scripts/animations';
   </script>
 </Layout>
