@@ -1,17 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #FF6B2C;
-  --color-primary-dark: #E5551A;
-  --color-secondary: #00B67A;
-  --color-accent: #FFBE1A;
-  --color-background: #FAFAF8;
+  --color-primary: #74B3DF;
+  --color-primary-dark: #4256B2;
+  --color-secondary: #D10DA6;
+  --color-accent: #6FCB63;
+  --color-navy: #4256B2;
+  --color-background: #F6FAFB;
   --color-surface: #FFFFFF;
-  --color-surface-alt: #F5F0EB;
-  --color-border: #E8E2DA;
+  --color-surface-alt: #E2F0FA;
+  --color-border: #D0F3FB;
   --color-text-primary: #1A1A1A;
-  --color-text-secondary: #6B6560;
-  --color-dark-bg: #1A1A1A;
+  --color-text-secondary: #8A8090;
+  --color-dark-bg: #2A2545;
 
   --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
 }
@@ -33,14 +34,18 @@
 
 @layer components {
   .text-gradient {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
+  .brand-gradient {
+    background: linear-gradient(135deg, #74B3DF 0%, #9B7FD0 50%, #D10DA6 100%);
+  }
+
   .hero-gradient {
-    background: linear-gradient(135deg, #FFF5F0 0%, #FFF0E6 30%, #F0FFF4 100%);
+    background: linear-gradient(135deg, #F6FAFB 0%, #E2F0FA 30%, #F3E8F9 70%, #F6FAFB 100%);
   }
 
   .blob {

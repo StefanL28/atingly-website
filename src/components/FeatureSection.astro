@@ -10,9 +10,9 @@ interface Props {
 const { title, description, color, reverse = false, screenContent = 'chat' } = Astro.props;
 
 const colorMap = {
-  primary: { bg: 'bg-primary/10', blob: 'bg-primary/15', accent: 'bg-primary', text: 'text-primary' },
-  secondary: { bg: 'bg-secondary/10', blob: 'bg-secondary/15', accent: 'bg-secondary', text: 'text-secondary' },
-  accent: { bg: 'bg-accent/10', blob: 'bg-accent/15', accent: 'bg-accent', text: 'text-accent' },
+  primary: { bg: 'bg-primary/10', blob: 'bg-primary/15', accent: 'brand-gradient', accentBg: 'bg-primary', text: 'text-primary' },
+  secondary: { bg: 'bg-secondary/10', blob: 'bg-secondary/12', accent: 'bg-secondary', accentBg: 'bg-secondary', text: 'text-secondary' },
+  accent: { bg: 'bg-navy/10', blob: 'bg-navy/12', accent: 'bg-navy', accentBg: 'bg-navy', text: 'text-navy' },
 };
 
 const colors = colorMap[color];
@@ -36,15 +36,15 @@ const colors = colorMap[color];
                 <p class="text-white/70 text-[10px]">3 nouvelles offres</p>
               </div>
               <div class="flex-1 p-3 space-y-2 bg-gray-50">
-                <div class="bg-white rounded-xl px-3 py-2 shadow-sm">
+                <div class="bg-white rounded-xl px-3 py-2 shadow-sm border border-border">
                   <p class="text-[9px] font-semibold text-text-primary">Nouvelle offre pour vous !</p>
                   <p class="text-[8px] text-text-secondary mt-0.5">Restaurant Le Gourmet — 25% de reduction</p>
                 </div>
-                <div class="bg-white rounded-xl px-3 py-2 shadow-sm">
+                <div class="bg-white rounded-xl px-3 py-2 shadow-sm border border-border">
                   <p class="text-[9px] font-semibold text-text-primary">Offre flash ⚡</p>
                   <p class="text-[8px] text-text-secondary mt-0.5">Supermarche Express — 15% sur tout</p>
                 </div>
-                <div class="bg-white rounded-xl px-3 py-2 shadow-sm">
+                <div class="bg-white rounded-xl px-3 py-2 shadow-sm border border-border">
                   <p class="text-[9px] font-semibold text-text-primary">Recommande pour vous</p>
                   <p class="text-[8px] text-text-secondary mt-0.5">Salon Beaute Plus — Soin gratuit</p>
                 </div>
@@ -53,19 +53,19 @@ const colors = colorMap[color];
           )}
           {screenContent === 'deals' && (
             <div class="h-full flex flex-col">
-              <div class={`${colors.accent} px-4 pt-6 pb-3`}>
+              <div class={`${colors.accentBg} px-4 pt-6 pb-3`}>
                 <p class="text-white font-bold text-xs">Pour vous</p>
                 <p class="text-white/70 text-[10px]">Basé sur vos préférences</p>
               </div>
               <div class="flex-1 p-3 space-y-2 bg-gray-50">
                 {['🍽️ Restaurants', '👗 Mode', '💇 Beaute'].map((cat) => (
-                  <div class="bg-white rounded-xl p-2.5 shadow-sm">
+                  <div class="bg-white rounded-xl p-2.5 shadow-sm border border-border">
                     <div class="flex items-center justify-between">
                       <span class="text-[9px] font-semibold text-text-primary">{cat}</span>
                       <span class={`text-[8px] font-bold ${colors.text} ${colors.bg} px-2 py-0.5 rounded-full`}>Nouveau</span>
                     </div>
                     <div class="flex gap-1 mt-1.5">
-                      <div class={`h-1 flex-1 ${colors.accent} rounded-full opacity-60`}></div>
+                      <div class={`h-1 flex-1 ${colors.accentBg} rounded-full opacity-60`}></div>
                       <div class={`h-1 w-8 ${colors.bg} rounded-full`}></div>
                     </div>
                   </div>
@@ -75,7 +75,7 @@ const colors = colorMap[color];
           )}
           {screenContent === 'map' && (
             <div class="h-full flex flex-col">
-              <div class={`${colors.accent} px-4 pt-6 pb-3`}>
+              <div class={`${colors.accentBg} px-4 pt-6 pb-3`}>
                 <p class="text-white font-bold text-xs">Pres de vous</p>
                 <p class="text-white/70 text-[10px]">12 commerces partenaires</p>
               </div>
@@ -88,21 +88,21 @@ const colors = colorMap[color];
                     <div class="absolute top-0 bottom-0 left-1/3 w-px bg-gray-300"></div>
                     <div class="absolute top-0 bottom-0 left-2/3 w-px bg-gray-300"></div>
                     <!-- Pins -->
-                    <div class={`absolute top-1/4 left-1/4 w-5 h-5 ${colors.accent} rounded-full border-2 border-white shadow flex items-center justify-center`}>
+                    <div class={`absolute top-1/4 left-1/4 w-5 h-5 ${colors.accentBg} rounded-full border-2 border-white shadow flex items-center justify-center`}>
                       <span class="text-white text-[6px] font-bold">1</span>
                     </div>
-                    <div class={`absolute top-1/3 left-1/2 w-5 h-5 ${colors.accent} rounded-full border-2 border-white shadow flex items-center justify-center`}>
+                    <div class={`absolute top-1/3 left-1/2 w-5 h-5 ${colors.accentBg} rounded-full border-2 border-white shadow flex items-center justify-center`}>
                       <span class="text-white text-[6px] font-bold">2</span>
                     </div>
-                    <div class={`absolute top-2/3 left-3/5 w-5 h-5 ${colors.accent} rounded-full border-2 border-white shadow flex items-center justify-center`}>
+                    <div class={`absolute top-2/3 left-3/5 w-5 h-5 ${colors.accentBg} rounded-full border-2 border-white shadow flex items-center justify-center`}>
                       <span class="text-white text-[6px] font-bold">3</span>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="p-2 bg-white">
-                <div class="bg-gray-50 rounded-lg p-2 flex items-center gap-2">
-                  <div class={`w-6 h-6 ${colors.accent} rounded-full flex items-center justify-center`}>
+                <div class="bg-surface-alt rounded-lg p-2 flex items-center gap-2">
+                  <div class={`w-6 h-6 ${colors.accentBg} rounded-full flex items-center justify-center`}>
                     <span class="text-white text-[8px]">📍</span>
                   </div>
                   <p class="text-[8px] text-text-secondary font-medium">Abidjan, Cote d'Ivoire</p>
@@ -118,7 +118,7 @@ const colors = colorMap[color];
   <!-- Text Content -->
   <div class={`${reverse ? 'lg:order-1' : ''}`} data-animate="fade-up">
     <div class={`inline-flex items-center gap-2 px-3 py-1.5 ${colors.bg} rounded-full mb-6`}>
-      <div class={`w-2 h-2 ${colors.accent} rounded-full`}></div>
+      <div class={`w-2 h-2 ${colors.accentBg} rounded-full`}></div>
       <span class={`text-xs font-semibold ${colors.text}`}>Fonctionnalite</span>
     </div>
     <h3 class="text-3xl md:text-4xl font-bold text-text-primary tracking-tight mb-4">{title}</h3>

@@ -26,22 +26,22 @@ const steps = [
 <section class="py-20 lg:py-32 bg-background" id="comment-ca-marche">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <SectionHeading subtitle="Commencez a economiser en trois etapes simples.">
-      Comment ca <span class="text-primary">marche</span>
+      Comment ca <span class="text-gradient">marche</span>
     </SectionHeading>
 
     <div class="relative grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
       <!-- Connecting line (desktop) -->
-      <div class="hidden md:block absolute top-24 left-[20%] right-[20%] h-px bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20"></div>
+      <div class="hidden md:block absolute top-24 left-[20%] right-[20%] h-px" style="background: linear-gradient(to right, rgba(116,179,223,0.2), rgba(209,13,166,0.4), rgba(116,179,223,0.2));"></div>
 
       {steps.map((step) => (
         <div class="relative text-center" data-animate="fade-up">
           <!-- Step number -->
-          <div class="relative z-10 w-20 h-20 mx-auto mb-6 bg-primary/10 rounded-2xl flex items-center justify-center">
-            <svg class="w-8 h-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <div class="relative z-10 w-20 h-20 mx-auto mb-6 bg-surface-alt rounded-2xl flex items-center justify-center">
+            <svg class="w-8 h-8 text-primary-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <Fragment set:html={step.icon} />
             </svg>
           </div>
-          <span class="inline-block text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">{step.number}</span>
+          <span class="inline-block text-xs font-bold text-primary-dark bg-surface-alt px-3 py-1 rounded-full mb-3">{step.number}</span>
           <h3 class="text-xl font-bold text-text-primary mb-2">{step.title}</h3>
           <p class="text-text-secondary leading-relaxed max-w-xs mx-auto">{step.description}</p>
         </div>

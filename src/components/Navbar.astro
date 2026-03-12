@@ -13,14 +13,9 @@ const navLinks = [
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
       <!-- Logo -->
-      <a href="#" class="flex items-center gap-2 group">
-        <div class="w-9 h-9 bg-primary rounded-lg flex items-center justify-center transition-transform group-hover:scale-105">
-          <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 20C8 20 10 12 16 12C22 12 24 20 24 20" stroke="white" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="16" cy="22" r="2.5" fill="white"/>
-          </svg>
-        </div>
-        <span class="text-xl font-extrabold text-primary tracking-tight">Swoop</span>
+      <a href="#" class="flex items-center gap-2.5 group">
+        <img src="/logo.png" alt="Swoop" class="w-9 h-9 transition-transform group-hover:scale-105" />
+        <span class="text-xl font-extrabold tracking-tight text-gradient">Swoop</span>
       </a>
 
       <!-- Desktop Nav -->
@@ -28,7 +23,7 @@ const navLinks = [
         {navLinks.map(link => (
           <a
             href={link.href}
-            class="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
+            class="text-sm font-medium text-text-secondary hover:text-primary-dark transition-colors"
           >
             {link.label}
           </a>
