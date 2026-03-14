@@ -33,12 +33,22 @@ const categories = [t('cat.restaurants'), t('cat.fashion'), t('cat.beauty')];
 
     <!-- Phone -->
     <div class="relative z-10 w-[240px] lg:w-[260px]">
-      <div class="bg-text-primary rounded-[2.5rem] p-2.5 shadow-xl">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-text-primary rounded-b-xl z-20"></div>
-        <div class="bg-white rounded-[2rem] overflow-hidden aspect-[9/19.5]">
+      <!-- Left: Action button -->
+      <div class="absolute -left-[3px] top-[19%] w-[3px] h-5 bg-text-primary rounded-l-[3px]"></div>
+      <!-- Left: Volume Up -->
+      <div class="absolute -left-[3px] top-[27%] w-[3px] h-9 bg-text-primary rounded-l-[3px]"></div>
+      <!-- Left: Volume Down -->
+      <div class="absolute -left-[3px] top-[38%] w-[3px] h-9 bg-text-primary rounded-l-[3px]"></div>
+      <!-- Right: Power button -->
+      <div class="absolute -right-[3px] top-[27%] w-[3px] h-12 bg-text-primary rounded-r-[3px]"></div>
+
+      <div class="bg-text-primary rounded-[2.8rem] p-[6px] shadow-2xl">
+        <div class="bg-white rounded-[2.4rem] overflow-hidden aspect-[9/19.5] relative">
+          <!-- Dynamic Island -->
+          <div class="absolute top-2.5 left-1/2 -translate-x-1/2 w-[68px] h-[18px] bg-text-primary rounded-full z-30"></div>
           {screenContent === 'chat' && (
             <div class="h-full flex flex-col">
-              <div class={`${colors.accent} px-4 pt-6 pb-3`}>
+              <div class={`${colors.accent} px-4 pt-8 pb-3`}>
                 <p class="text-white font-bold text-xs">{t('screen.chat.title')}</p>
                 <p class="text-white/70 text-[10px]">{t('screen.chat.subtitle')}</p>
               </div>
@@ -60,7 +70,7 @@ const categories = [t('cat.restaurants'), t('cat.fashion'), t('cat.beauty')];
           )}
           {screenContent === 'deals' && (
             <div class="h-full flex flex-col">
-              <div class={`${colors.accentBg} px-4 pt-6 pb-3`}>
+              <div class={`${colors.accentBg} px-4 pt-8 pb-3`}>
                 <p class="text-white font-bold text-xs">{t('screen.deals.title')}</p>
                 <p class="text-white/70 text-[10px]">{t('screen.deals.subtitle')}</p>
               </div>
@@ -82,7 +92,7 @@ const categories = [t('cat.restaurants'), t('cat.fashion'), t('cat.beauty')];
           )}
           {screenContent === 'map' && (
             <div class="h-full flex flex-col">
-              <div class={`${colors.accentBg} px-4 pt-6 pb-3`}>
+              <div class={`${colors.accentBg} px-4 pt-8 pb-3`}>
                 <p class="text-white font-bold text-xs">{t('screen.map.title')}</p>
                 <p class="text-white/70 text-[10px]">{t('screen.map.subtitle')}</p>
               </div>
