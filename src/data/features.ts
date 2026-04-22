@@ -11,7 +11,7 @@ export const mainFeatures = [
   },
   {
     title: "Commerce local, impact réel",
-    description: "Soutenez les commerces d'Abidjan tout en économisant. Chaque achat via Swoop renforce l'économie locale et votre portefeuille.",
+    description: "Soutenez les commerces d'Abidjan tout en économisant. Chaque achat via Atingly renforce l'économie locale et votre portefeuille.",
     color: "accent" as const,
   },
 ];
